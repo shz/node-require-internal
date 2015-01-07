@@ -1,39 +1,16 @@
 var assert = require('assert')
+  , test = require('./framework')
   , ri = require('../lib')
-  , m = ri.require('../example/module')
-  , internals = ri.getInternals(m)
+  , m = null // Filled in later
+  , internals = null // Filled in later
   ;
 
-// Framework
-
-var results = [];
-var test = function(name, f) {
-  try {
-    f();
-    results.push({ok: true, name: name});
-  } catch (err) {
-    results.push({ok: false, name: name, error: err.message});
-  }
-};
-var done = function() {
-  var failed = false;
-
-  // Output in TAP
-  console.log('0..' + results.length);
-  for (var i=0; i<results.length; i++) {
-    var r = results[i];
-    console.log(r.ok ? 'ok' : 'not ok', i + 1, '-', r.name);
-    if (!r.ok) {
-      failed = true;
-      console.log('    ' + r.error.split(/\r?\n/).join('\n    '));
-    }
-  }
-
-  process.exit(failed ? 1 : 0);
-};
-
-// Actual tests
-
+test('can require', function() {
+  m = ri.require('../example/module');
+});
+test('can get internals', function() {
+  internals = ri.getInternals(m);
+});
 test('exports works as expected', function() {
   assert.equal('function', typeof m.somethingPublic);
 });
@@ -52,4 +29,13 @@ if (process.version.match(/v0\.10/)) {
   });
 }
 
-done();
+test('cannot use on built on regular packages', function() {
+  assert.throws(function() {
+    ri.require('path');
+  }, /modules/);
+});
+test('cannot use on already imported modules', function() {
+  assert.throws(function() {
+    ri.require('../lib/index'); // We already imported this via normal means
+  }, /already/);
+});
