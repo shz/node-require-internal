@@ -43,9 +43,13 @@ test('internals.something exposed', function() {
 test('internals.addSomething exposed', function() {
   assert.equal(11, internals.addSomething());
 });
-test('internals.something read-only', function() {
-  internals.something = 10;
-  assert.equal(11, internals.addSomething());
-});
+
+// On 0.10 this seems to be readonly, so let's count on that
+if (process.version.match(/v0\.10/)) {
+  test('internals.something read-only', function() {
+    internals.something = 10;
+    assert.equal(11, internals.addSomething());
+  });
+}
 
 done();
