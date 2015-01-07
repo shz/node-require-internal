@@ -16,15 +16,20 @@ var test = function(name, f) {
   }
 };
 var done = function() {
+  var failed = false;
+
   // Output in TAP
   console.log('0..' + results.length);
   for (var i=0; i<results.length; i++) {
     var r = results[i];
     console.log(r.ok ? 'ok' : 'not ok', i + 1, '-', r.name);
     if (!r.ok) {
+      failed = true;
       console.log('    ' + r.error.split(/\r?\n/).join('\n    '));
     }
   }
+
+  process.exit(failed ? 1 : 0);
 };
 
 // Actual tests
