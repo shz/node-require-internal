@@ -4,6 +4,8 @@ Import a module, and expose its internals.  Primarily intended for
 testing functions that would normally be hidden, but you can probably
 also do other kinds of hacker with it.
 
+Note: the internals seem to be read only.  I'm not sure why; if you know, tell me!
+
 ## Usage
 
 ### Installation

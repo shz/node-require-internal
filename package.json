@@ -4,7 +4,7 @@
   "description": "Get at non-exported module contents",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node test/wip.js"
+    "test": "node test/run.js"
   },
   "repository": {
     "type": "git",
