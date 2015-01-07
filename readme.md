@@ -1,5 +1,7 @@
 # require-internal
 
+[![Build Status](https://travis-ci.org/shz/node-require-internal.png)](https://travis-ci.org/shz/node-require-internal)
+
 Import a module, and expose its internals.  Primarily intended for
 testing functions that would normally be hidden, but you can probably
 also do other kinds of hacker with it.
