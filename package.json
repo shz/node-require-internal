@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shz/node-require-internal/issues"
   },
-  "homepage": "https://github.com/shz/node-require-internal"
+  "homepage": "https://github.com/shz/node-require-internal",
+  "engines": {
+    "node": ">=0.8.0 <0.13"
+  }
 }
