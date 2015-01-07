@@ -1,0 +1,19 @@
+{
+  "name": "require-internal",
+  "version": "1.0.0",
+  "description": "Get at non-exported module contents",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test/wip.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shz/node-require-internal.git"
+  },
+  "author": "Patrick Stein <lylepstein@gmail.com>",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/shz/node-require-internal/issues"
+  },
+  "homepage": "https://github.com/shz/node-require-internal"
+}
